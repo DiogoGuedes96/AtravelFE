@@ -1,0 +1,13 @@
+.rounded-white-button {
+    border-radius: 50%;
+    border-color: #BFBFBF;
+    border-width: 2px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: 5px;
+    border-style: solid;
+}

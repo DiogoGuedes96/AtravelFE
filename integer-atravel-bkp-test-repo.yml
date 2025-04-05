@@ -1,0 +1,60 @@
+# The purpose of this pipeline is to create a backup of an Azure DevOps repository and store it in an Azure Blob Storage container. 
+# The pipeline is triggered on all branches, and it contains a single stage with one job. The job has three steps: cloning the repository, 
+# creating a zip file of the repository, and copying the zip file to the Azure Blob Storage container. The pipeline can be customized with 
+# additional steps as needed for building.
+# integer-atravel-bkp-test-repo.yml
+
+# Define the trigger condition for the pipeline. This section defines the trigger condition for the pipeline, 
+# which in this case is set to run on all branches.
+trigger:
+  branches:
+    include:
+      - 'test'
+
+# Define the stages of the pipeline. This section defines the stages of the pipeline. 
+# There is only one stage called "Backup", which contains one job called "BackupJob". The job will run on the ladev version of the Windows VM image.
+stages:
+  - stage: Backup
+    displayName: Backup Azure DevOps Repository to Azure Blob Storage
+    jobs:
+      - job: BackupJob
+        displayName: Backup Job
+        pool:
+          vmImage: windows-latest
+        steps:
+          
+# This section contains the first step of the job. It uses the "CmdLine" task to run a command-line script that clones the specified 
+# Azure DevOps repository to the working directory. 
+
+          - task: CmdLine@2
+            displayName: Clone Azure DevOps Repository
+            inputs:
+              script: |
+                git clone --mirror https://$(PAT)@dev.azure.com/integer-consulting/_git/Atravel
+              workingDirectory: $(System.DefaultWorkingDirectory)
+
+# This section contains the second step of the job. It uses the "ArchiveFiles" task to create a zip file of the cloned 
+# repository in the artifact staging directory.
+
+          - task: ArchiveFiles@2
+            displayName: Archive Azure DevOps Repository
+            inputs:
+             rootFolderOrFile: $(System.DefaultWorkingDirectory)
+             includeRootFolder: true
+             archiveType: zip
+             archiveFile : $(Build.ArtifactStagingDirectory)/integer-atravel-backup.zip
+             replaceExistingArchive: true
+
+# This section contains the third step of the job. It uses the "AzureFileCopy" task to copy the zip file from the artifact staging 
+# directory to an Azure Blob Storage container. The task specifies the Azure subscription, destination, storage account, container name, 
+# and blob prefix
+
+          - task: AzureFileCopy@5
+            displayName: Copy Backup to Azure Blob Storage
+            inputs:
+              sourcePath: $(Build.ArtifactStagingDirectory)/integer-atravel-backup.zip
+              azureSubscription: 'integer-devops-bkp-repo-Atravel'
+              destination: 'AzureBlob'
+              storage: 'devopsbkprepo'
+              containerName: 'integer-atravel-container-bkp-repo'
+              blobPrefix: 'integer-atravel-bkp-test-repo'

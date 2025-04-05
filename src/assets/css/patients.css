@@ -1,0 +1,12 @@
+.add_patient_responsible {
+    margin-top: -0.25rem;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #597EF7;
+    justify-content: end;
+    display: flex;
+}
+
+.add_patient_responsible span {
+    margin-right: 0.5rem;
+}

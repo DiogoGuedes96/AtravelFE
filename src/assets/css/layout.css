@@ -1,0 +1,131 @@
+.client_logo {
+    width: 120px;
+    margin: 20px 0px 20px 16px
+}
+
+.ant-btn-primary.ant-btn-lg.ant-btn-block span {
+    color: #fff;
+}
+
+.content_page {
+    margin: 24px;
+}
+
+.upload-image{
+    height: 220px !important;
+    width: 220px !important;
+  }
+  
+  .upload-image .ant-upload{
+    height: 100% !important;
+    width: 100% !important;
+  }
+  
+
+.header__row {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: #F7F7F7;
+}
+
+.form-row-radio { width: 100%; }
+.form-row-radio + .form-row-radio { margin-top: 10px; }
+.form-row-radio__title-box {
+    margin-bottom: 7px;
+    padding: 14px 25px;
+    border-radius: 6px;
+    background-color: #F2F2F2;
+}
+
+.search_bar,
+.filter_bar {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.filter_bar {
+    background-color: #fafafa;
+    margin-bottom: 25px !important;
+}
+
+.search_bar .form_search_horizontal, .filter_bar, .form_filter_horizontal {
+    display: flex;
+    align-items: end;
+    margin: 0;
+}
+
+.search_bar .form_search_horizontal .item_search, .filter_bar .form_filter_horizontal .item_filter {
+    margin: 0;
+    padding-right: 8px;
+}
+
+.form_search_horizontal .item_search .ant-input-search-button, .form_filter_horizontal .item_filter .ant-input-filter-button {
+    color: rgba(0, 0, 0, 0.88);
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    box-shadow: none;
+}
+
+.form_search_horizontal .item_search .ant-input-search-button:hover, .form_filter_horizontal .item_filter .ant-input-filter-button:hover {
+    background-color: #f7f7f7;
+    color: rgba(0, 0, 0, 0.88);
+}
+
+.alertMessage {
+    margin-bottom: 8px;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+    background: #dfe6e8 !important;
+}
+
+.icon-permissions {
+    color: #b6b6b6;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.item_search .ant-input-search {
+    width: 150%;
+}
+
+.ant-table-row.ant-table-row-level-1 > .ant-table-cell.ant-table-cell-with-append {
+    border-left: solid 21px #f0f0f0;
+}
+
+/* .ant-timeline.ant-timeline-label.historic-timeline { */
+.ant-timeline.ant-timeline-label.historic-timeline .ant-timeline-item.ant-timeline-item-left,
+.ant-timeline.ant-timeline-label.historic-timeline .ant-collapse-header {
+    padding-bottom: 0 !important;
+}
+
+.ant-timeline.ant-timeline-label.historic-timeline .ant-collapse-content-box {
+    padding-top: 0 !important;
+}
+
+.ant-timeline.ant-timeline-label.historic-timeline .ant-timeline-item-label {
+    width: calc(30% - 48px) !important;
+}
+
+.ant-timeline.ant-timeline-label.historic-timeline .ant-timeline-item-tail {
+    inset-inline-start: 30% !important;
+}
+
+.ant-timeline.ant-timeline-label.historic-timeline .ant-timeline-item-head.ant-timeline-item-head-blue {
+    inset-inline-start: 30% !important;
+}
+
+.ant-timeline.ant-timeline-label.historic-timeline .ant-timeline-item-content {
+    inset-inline-start: calc(30% - 4px) !important;
+    width: calc(70% - 12px) !important;
+}
+
+#services_dashboard .ant-card-body {
+    margin-top: 16px;
+}
+
+:where(.css-dev-only-do-not-override-h7zegv).ant-popover .ant-popover-inner:has(> div.ant-popover-inner-content  > div.timetable-popover) {
+    padding: 0;
+}

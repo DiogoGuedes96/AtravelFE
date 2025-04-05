@@ -1,0 +1,21 @@
+.show_result_size {
+    padding: 0px 0px 16px 16px;
+}
+
+.zone_result_size_n_export {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.route_result_size_n_export {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.route_form_space_action_btns {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

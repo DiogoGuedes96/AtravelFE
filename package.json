@@ -1,0 +1,67 @@
+{
+  "name": "bms-web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/charts": "^2.1.1",
+    "@ant-design/colors": "^7.0.0",
+    "@ant-design/icons": "^5.2.6",
+    "@ant-design/plots": "^2.2.2",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@react-pdf/renderer": "^3.3.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.48",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "antd": "^5.8.6",
+    "axios": "^1.5.0",
+    "date-fns": "^3.4.0",
+    "dayjs": "^1.11.10",
+    "laravel-echo": "^1.15.3",
+    "moment": "^2.29.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-input-mask": "^3.0.0-alpha.2",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "5.0.1",
+    "rxjs": "^7.8.1",
+    "socket.io-client": "^4.7.2",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.54.10",
+    "@types/react-input-mask": "^3.0.5"
+  }
+}

@@ -1,0 +1,67 @@
+trigger:
+  branches:
+    include:
+      - test
+  paths:
+    exclude:
+      - 'security-integer-atravel-SSDLC.yaml'  # Exclui o próprio arquivo YAML do trigger
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  runPipelineOnPR: false  # Definir como falso por padrão
+  nodeVersion: '18.19.0'
+
+pr: none  # Impede que pull requests acionem o pipeline
+
+schedules:
+- cron: '0 3 */15 * 1'
+  displayName: 'Fortnightly Monday 3am build'
+  branches:
+    include:
+    - test
+  always: false
+
+steps:
+# Step 1: Instalar a versão necessária do Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(nodeVersion)'
+  displayName: 'Install Node.js'
+
+# Step 2: Instalar o ESLint
+- script: |
+    npm install -g eslint
+    npm install
+  workingDirectory: $(System.DefaultWorkingDirectory)
+  displayName: 'Install ESLint'
+
+# Step 3: Executar o ESLint para analisar o código-fonte e gerar um relatório HTML
+- script: |
+    eslint src/ --format html -o result-ssdlc-atravel.html
+  workingDirectory: $(System.DefaultWorkingDirectory)
+  displayName: 'Run ESLint and Generate HTML Report'
+
+# Step 4: Publicar o relatório HTML como um artefato de build
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/result-ssdlc-atravel.html'
+    ArtifactName: 'ESLintReport'
+  displayName: 'Publish ESLint HTML Report'
+
+# Step 5: Enviar o relatório HTML por e-mail como um anexo
+- task: servbus.SendMail4VSTS.SendMail4VSTS.SendEmail@0
+  inputs:
+    To: 'tatianne.silva@integer.pt;ricardo.carvalho@integer.pt;suporte@integer.pt'
+    From: 'factory.dev@integer.pt'
+    Subject: 'Result Build Atravel SSDLC'
+    Body: 'Result Build Atravel SSDLC.'
+    Attachment: '$(System.DefaultWorkingDirectory)/result-ssdlc-atravel.html'
+    SmtpServer: 'smtp.office365.com'
+    SmtpPort: '587'
+    SmtpUsername: 'factory.dev@integer.pt'
+    SmtpPassword: $(SMTPPASSWORD)
+    STARTTLS: true
+  displayName: 'Send Email with ESLint Analysis Results'
